@@ -24,6 +24,5 @@ for line in f:
             score_2 = score_2 * 5 + ERROR_SCORES_2.get(_)
         scores.append(score_2)
 
-scores.sort()
 print(f"Part1: {score_1}")
-print(f"Part2: {scores[int(len(scores)/2)]}")
+print(f"Part2: {sorted(scores)[int(len(scores)/2)]}")
