@@ -21,8 +21,7 @@ for line in f:
             next_closing_chars = next_closing_chars[:-1]
     if(not error): 
         error = False
-        next_closing_chars.reverse()
-        for _ in next_closing_chars:
+        for _ in reversed(next_closing_chars):
             score = score * 5 + ERROR_SCORES.get(_)
         scores.append(score)
 
