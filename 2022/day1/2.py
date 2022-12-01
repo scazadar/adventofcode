@@ -8,8 +8,5 @@ for line in f:
     else:
         elves.append(sum(cals))
         cals = []
-
-top3 = 0
-for x in range(3):
-    top3 += elves.pop(elves.index(max(elves)))
-print(top3)
+        
+print(sum(sorted(elves)[-3:]))
