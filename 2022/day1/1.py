@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-f = open("1.txt").readlines()
+f = open("input.txt").readlines()
 cals = []
 elves = []
 for line in f:

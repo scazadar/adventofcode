@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-f = open("1.txt").readlines()
+f = open("input.txt").readlines()
 cals = []
 elves = []
 for line in f:
@@ -8,5 +8,5 @@ for line in f:
     else:
         elves.append(sum(cals))
         cals = []
-        
+
 print(sum(sorted(elves)[-3:]))
