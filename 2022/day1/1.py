@@ -9,4 +9,5 @@ for line in f:
         elves.append(sum(cals))
         cals = []
 
+
 print(max(elves))
