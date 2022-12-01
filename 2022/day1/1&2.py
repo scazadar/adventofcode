@@ -1,2 +1,2 @@
-print("Teil 1: " + str(max([sum([int(_) for _ in _.split("\n")]) for _ in open("input.txt").read().split("\n\n")])))
-print("Teil 2: " + str(sum(sorted([sum([int(_) for _ in _.split("\n")]) for _ in open("input.txt").read().split("\n\n")])[-3:])))
+print("Teil 1: " ,(max([sum([int(_) for _ in _.split("\n")]) for _ in open("input.txt").read().split("\n\n")])))
+print("Teil 2: " ,(sum(sorted([sum([int(_) for _ in _.split("\n")]) for _ in open("input.txt").read().split("\n\n")])[-3:])))
