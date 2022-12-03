@@ -12,4 +12,4 @@ print("Part2: ",sum([["B X", "C X", "A X", "A Y", "B Y", "C Y", "C Z", "A Z", "B
 
 #Zeit Ende
 ende = time.time()
-print('Zeit:   {:5.3f}s'.format(ende-start))
+print('Zeit:   {:.3f}s'.format(ende-start))

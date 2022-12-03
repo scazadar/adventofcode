@@ -12,4 +12,4 @@ print("Part2: ", sum([_-96 if _ > 96 else _-38 for _ in [ord(list([set(_) for _ 
 
 #Zeit Ende
 ende = time.time()
-print('Zeit:   {:5.3f}s'.format(ende-start))
+print('Zeit:   {:.3f}s'.format(ende-start))
