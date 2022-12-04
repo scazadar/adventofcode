@@ -13,3 +13,4 @@ print("Part2: ", sum([1 if len(_[0]&_[1]) > 0 else 0 for _ in f]))
 #Zeit Ende
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
+# 0.008s

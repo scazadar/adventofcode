@@ -12,3 +12,4 @@ print("Teil 2: " ,(sum(sorted([sum([int(_) for _ in _.split("\n")]) for _ in ope
 #Zeit Ende
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
+# 0.003s
