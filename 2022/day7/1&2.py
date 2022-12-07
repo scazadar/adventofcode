@@ -6,15 +6,10 @@ import time
 start = time.time()
 
 #Main
-f = [_.strip().split() for _ in open("inputs/day7").readlines()]
-
 current_dir = []
 dirs = {}
 
-for _ in f:
-    if(len(_) == 2 and "ls" != _[1] and "dir" != _[0]):
-        for x in range(len(current_dir)):
-            dirs["/".join(current_dir[:x+1])] = dirs["/".join(current_dir[:x+1])] + int(_[0])
+for _ in [_.strip().split() for _ in open("inputs/day7").readlines()]:
     if("$" in _):
         if("cd" == _[1] and "/" == _[2]):
             current_dir = ["/"]
@@ -24,6 +19,9 @@ for _ in f:
             current_dir.append(_[2])
         if(not dirs.get("/".join(current_dir))):
             dirs.setdefault("/".join(current_dir),0)
+    elif(len(_) == 2 and "ls" != _[1] and "dir" != _[0]):
+        for x in range(len(current_dir)):
+            dirs["/".join(current_dir[:x+1])] = dirs["/".join(current_dir[:x+1])] + int(_[0])
 
 part1 = []
 part2 = []
