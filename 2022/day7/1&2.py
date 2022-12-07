@@ -8,8 +8,8 @@ start = time.time()
 #Main
 f = [_.strip().split() for _ in open("inputs/day7").readlines()]
 
-current_dir = ["/"]
-dirs = {"/":0}
+current_dir = []
+dirs = {}
 
 for _ in f:
     if(len(_) == 2 and "ls" != _[1] and "dir" != _[0]):
