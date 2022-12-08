@@ -37,4 +37,4 @@ print("Part 2: ",max(scenic_scores))
 #Zeit Ende
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
-# 0.003s
+# 0.290s
