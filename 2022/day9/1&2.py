@@ -65,7 +65,6 @@ for headmove in input:
         #Part2
         for _ in range(len(tail_positions)-1):
             tail_positions[_+1] = move_tail(tail_positions[_],tail_positions[_+1])
-
         visited2.append(",".join(map(str,tail_positions[-1])))
 
 print("Part 1: ", len(set(visited)))
@@ -75,4 +74,4 @@ print("Part 2: ", len(set(visited2)))
 #Zeit Ende
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
-# 0.290s
+# 0.081s
