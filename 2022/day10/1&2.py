@@ -14,7 +14,8 @@ signal_strengths = []
 display = [['.' for _ in range (40)] for _ in range(6)]
 
 def display_output():
-    display[int(cycles/40)][cycles-(int((cycles/40))*40)] = "█" if cycles-(int((cycles/40))*40) in [x-1,x,x+1] else '░'
+    cycle_row = cycles-(int((cycles/40))*40)
+    display[int(cycles/40)][cycle_row] = "█" if cycle_row in [x-1,x,x+1] else '░'
 
 for cmd in input:
     if(cmd[0] == "noop"):
