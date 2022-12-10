@@ -37,4 +37,3 @@ for row in display:
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
 # 0.003s
-
