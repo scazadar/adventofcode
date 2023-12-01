@@ -1,2 +1,0 @@
- /usr/bin/env /bin/python3.12 /home/scazadar/.local/share/code-server/extensions/ms-python.python-2023.4.1-universal/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 37329 -- /home/scazadar/AdventOfCode/2023/Tag1/test.py 
- /usr/bin/env /bin/python3.12 /home/scazadar/.local/share/code-server/extensions/ms-python.python-2023.4.1-universal/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 39241 -- /home/scazadar/AdventOfCode/2023/Tag1/test.py 
