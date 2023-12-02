@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #Imports
-import time, string, math
+import time, math
 
 #Zeit Start
 start = time.time()
