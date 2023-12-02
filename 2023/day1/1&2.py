@@ -18,7 +18,7 @@ stringToNumber = {
 }
 
 #Main
-print(sum([int("".join([s.translate({ord(i): None for i in string.ascii_letters})[0],s.translate({ord(i): None for i in string.ascii_letters})[-1]])) for s in open("2023/inputs/day1").read().split("\n")]))
+print('Part1: ',sum([int("".join([s.translate({ord(i): None for i in string.ascii_letters})[0],s.translate({ord(i): None for i in string.ascii_letters})[-1]])) for s in open("2023/inputs/day1").read().split("\n")]))
 
 summe = 0
 for s in open("2023/inputs/day1").read().split("\n"):
@@ -31,7 +31,7 @@ for s in open("2023/inputs/day1").read().split("\n"):
                 if s[i:].startswith(sn):
                     partnumber += str(number)
     summe += int("".join([partnumber[0],partnumber[-1]])) 
-print(summe)
+print('Part2: ',summe)
 
 
 #Zeit Ende
