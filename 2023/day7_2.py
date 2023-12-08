@@ -5,19 +5,8 @@ import time
 #Zeit Start
 start = time.time()
 
-pointSum:int = 0
-winNumberList:list = []
-
 #Main
 cards = ['J','2','3','4','5','6','7','8','9','T','Q','K','A']
-
-five = []
-four = []
-three = []
-two = []
-one = []
-fullhouse = []
-twopair = []
 
 def handValue(hand):
     cardAmounts = [0 for x in range(13)]
@@ -29,32 +18,26 @@ def handValue(hand):
         or 3 in cardAmounts[1:] and hand.count('J') == 2
         or 2 in cardAmounts[1:] and hand.count('J') == 3
         or hand.count('J') >= 4):
-        five.append(hand)
         return 7
     elif(4 in cardAmounts[1:] 
          or 3 in cardAmounts[1:] and hand.count('J') == 1
          or 2 in cardAmounts[1:] and hand.count('J') == 2
          or hand.count('J') == 3):
-        four.append(hand)
         return 6
     elif(3 in cardAmounts[1:] and 2 in cardAmounts[1:]
          or 3 in cardAmounts[1:] and hand.count('J') >= 1
          or 2 in cardAmounts[1:] and hand.count('J') >= 2
          or cardAmounts[1:].count(2) == 2 and hand.count('J') == 1):
-        fullhouse.append(hand)
         return 5
     elif(3 in cardAmounts[1:] 
          or 2 in cardAmounts[1:] and hand.count('J') == 1
          or hand.count('J') == 2):
-        three.append(hand)
         return 4
     elif(cardAmounts[1:].count(2) == 2 
          or 2 in cardAmounts[1:] and hand.count('J') == 1):
-        twopair.append(hand)
         return 3
     elif(2 in cardAmounts[1:] 
          or hand.count('J') == 1):
-        one.append(hand)
         return 2
     else:
         return 1

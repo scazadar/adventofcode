@@ -5,9 +5,6 @@ import time
 #Zeit Start
 start = time.time()
 
-pointSum:int = 0
-winNumberList:list = []
-
 #Main
 cards = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
