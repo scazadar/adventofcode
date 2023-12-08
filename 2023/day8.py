@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 #Imports
 import time
+import math
 
 #Zeit Start
 start = time.time()
@@ -10,7 +11,7 @@ file = open("2023/inputs/day8").read().split("\n")
 instruction = file[0]
 nodes = {node.split("=")[0].strip():node.split("=")[1].strip("() ").split(", ") for node in file[2:]}
 
-""" currentNode = nodes.get('AAA')
+currentNode = nodes.get('AAA')
 steps = 0
 finish = False
 while not finish:
@@ -21,32 +22,24 @@ while not finish:
             break
         currentNode = nodes.get(currentNode[0 if i == 'L' else 1])
 
-print(f"Part1: {steps}") """
+print(f"Part1: {steps}") 
 
-
-currentNodes = [nodes.get(node) for node in nodes if node[2] == "A"]
-nextNodes = []
-steps = 0
-finishCount = 0
-print(currentNodes)
-while finishCount != len(currentNodes):
-    for i in instruction:
-        steps += 1
-        for currentNode in currentNodes:
+currentNodes = [[node,0] for node in nodes if node[2] == "A"]
+for x,node in enumerate(currentNodes):
+    finish = False
+    currentNode = nodes.get(node[0])
+    while not finish:
+        for i in instruction:
+            node[1] += 1
             if(currentNode[0 if i == 'L' else 1][2] == "Z"):
-                finishCount += 1 
-            if(finishCount == len(currentNodes)):
+                finish = True
+                if(currentNode[0 if i == 'L' else 1] not in [n[0] for n in currentNodes]):
+                    currentNodes.append([currentNode[0 if i == 'L' else 1],0])
                 break
-            nextNodes.append(nodes.get(currentNode[0 if i == 'L' else 1]))
-        if(len(currentNodes) == len(nextNodes)):
-            currentNodes = nextNodes
-        else:
-            break
-        nextNodes = []
-        finishCount = 0
+            else:
+                currentNode = nodes.get(currentNode[0 if i == 'L' else 1])
 
-print(currentNodes)
-print(f"Part2: {steps}")
+print(f"Part2: {math.lcm(*[node[1] for node in currentNodes])}")
 
 #Zeit Ende
 ende = time.time()
