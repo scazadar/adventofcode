@@ -19,10 +19,8 @@ for zahlenfolge in zahlenfolgen:
 
     for x in reversed(range(1,len(tempNumbers))):
         tempNumbers[x-1].append(tempNumbers[x][-1] + tempNumbers[x-1][-1])
-    nextNumbers.append(tempNumbers[0][-1])
-    
-    for x in reversed(range(1,len(tempNumbers))):
         tempNumbers[x-1].insert(0,tempNumbers[x-1][0] - tempNumbers[x][0])
+    nextNumbers.append(tempNumbers[0][-1])
     previousNumbers.append(tempNumbers[0][0])
     
 print(f"Part1: {sum(nextNumbers)}")
