@@ -10,7 +10,6 @@ zahlenfolgen = [[int(_) for _ in _.split(" ")] for _ in open("2023/inputs/day9")
 
 nextNumbers = []
 previousNumbers = []
-tempNumbers = []
 
 for zahlenfolge in zahlenfolgen:
     tempNumbers = [zahlenfolge]
