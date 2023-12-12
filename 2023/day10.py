@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 #Imports
 import time
+import copy
 
 #Zeit Start
 start = time.time()
@@ -16,7 +17,7 @@ sketch.insert(len(sketch[0]),"." * len(sketch[0]))
 sketch.insert(len(sketch[0]),"." * len(sketch[0]))
 sketch = [[_ for _ in _] for _ in sketch]
 
-sketchcopy = sketch.copy()
+sketchcopy = copy.deepcopy(sketch)
 
 startPosition = [0,0]
 lastPosition = [0,0]
@@ -76,20 +77,27 @@ for y in range(1,len(sketch)-1):
         up = "".join([_ for _ in [sketch[_][x]  for _ in range(len(sketch[:y])) if [x,_] in loopparts and sketch[_][x] != "|"]])
         down = "".join([_ for _ in [sketch[_+y][x]  for _ in range(len(sketch[y+1:])) if [x,_+y] in loopparts and sketch[_+y][x] != "|"]])
         
+        leftParts = left.count("L7") + left.count("FJ") + left.count("|")
+        rightParts = right.count("L7") + right.count("FJ") + right.count("|")
+        upParts = up.count("7L") + up.count("FJ") + up.count("-")
+        downParts = down.count("7L") + down.count("FJ") + down.count("-")
+        
         if([x,y] not in loopparts
-           and ("L7" in left or "FJ" in left or left.count("|") % 2 == 1)
-           and ("L7" in right or "FJ" in right or right.count("|") % 2 == 1)
-           and ("7L" in up or "FJ" in up or up.count("-") % 2 == 1)
-           and ("7L" in down or "FJ" in down or down.count("-") % 2 == 1)
+           and (leftParts % 2 == 1)
+           and (rightParts % 2 == 1)
+           and (upParts % 2 == 1)
+           and (downParts % 2 == 1)
            #and len([sketch[y][_] for _ in range(len(sketch[y][:x])) if [_,y] in loopparts]) > 0
            #and len([sketch[y][_+x] for _ in range(len(sketch[y][x+1:])) if [_+x,y] in loopparts]) > 0
            #and len([_ for _ in [sketch[_][x]  for _ in range(len(sketch[:y])) if [x,_] in loopparts]]) > 0
            #and len([_ for _ in [sketch[_+y][x]  for _ in range(len(sketch[y+1:])) if [x,_+y] in loopparts]]) > 0
            ):
-            inside.append([x,y])  
+            inside.append([x,y])
             sketchcopy[y][x] = 'I'
         elif([x,y] not in loopparts):
             sketchcopy[y][x] = 'O'
+        else:
+            sketchcopy[y][x] = '-'
 
 for _ in sketchcopy:
     print("".join(_))  
