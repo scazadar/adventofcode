@@ -52,7 +52,7 @@ for _ in galaxieConnections:
 
     
 print(f"Part1: {sum(distances)}")
-print(f"Part1: {sum(distancesPart2)}")
+print(f"Part2: {sum(distancesPart2)}")
 
 #Zeit Ende
 ende = time.time()
