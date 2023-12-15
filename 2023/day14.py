@@ -54,9 +54,12 @@ print(f"Part1: {load}")
 platform = [_ for _ in open("2023/inputs/day14").read().split("\n")]
 rows = platform.copy()
 
-loads = []
+loads = [rows]
+sequence = []
+startSequence = 0
+endSequence = 0    
 
-for _ in range(100):
+for _ in range(1,1000000000):
     tempRows = []
     rows = turnList(rows)
     while tempRows != rows:
@@ -78,11 +81,15 @@ for _ in range(100):
         tempRows = rows.copy()
         for x,row in enumerate(rows):
             rows[x] = moveRocks("east",row)
-    loads.append(calcLoad(rows))
+            
+    if(rows in loads):
+        startSequence = loads.index(rows)
+        endSequence = startSequence + (_-startSequence)
+        break
+    
+    loads.append(rows)
 
-platform = rows
-
-print(f"Part2: {calcLoad(platform)}")
+print(f"Part2: {calcLoad(loads[(1000000000-startSequence) % (endSequence-startSequence) + startSequence])}")
 
 
 #Zeit Ende
