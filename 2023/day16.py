@@ -55,7 +55,7 @@ def process(cursors):
                 else:
                     newCursors.append(nextPosition)
 
-        cursors = copy.deepcopy(newCursors)
+        cursors = newCursors
     return energized
 
 
