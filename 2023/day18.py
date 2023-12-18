@@ -48,7 +48,7 @@ edges,edgeLength = getEdges(part2cmds)
 lagoon = sum([(edges[_][1]+edges[_+1][1])*(edges[_][0]-edges[_+1][0]) for _ in range(len(edges)-1)]) // 2
 print(f"Part2: {lagoon + (edgeLength // 2) +1}")
 
-    
+   
 #Zeit Ende
 ende = time.time()
 print('Zeit:   {:.3f}s'.format(ende-start))
