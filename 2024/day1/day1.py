@@ -1,11 +1,12 @@
-input = [[int(x) for x in s.split()] for s in open("2024/inputs/day1").read().split("\n")]
+#!/usr/bin/env python3
+#Imports
+import time
 
-l = []
-r = []
+#Zeit Start
+start = time.time()
 
-for i in input:
-    l.append(i[0])
-    r.append(i[1])
+#Main
+l,r = zip(*[[int(x) for x in s.split()] for s in open("2024/inputs/day1.sample").read().split("\n")])
 
 #Part1
 part1 = 0
@@ -18,3 +19,8 @@ for x,n in enumerate(sorted(l)):
 
 print(f"Part: {part1}")
 print(f"Part2: {part2}")
+
+#Zeit Ende
+ende = time.time()
+print('Zeit:   {:.3f}s'.format(ende-start))
+# 0.003s
