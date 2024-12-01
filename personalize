@@ -1,0 +1,2 @@
+python3.12 -m ensurepip --upgrade
+python3.12 -m pip install --user -r ./requirements.txt
