@@ -24,26 +24,29 @@ while not finish:
 print(f"Part1: {steps}") """
 
 
-currentNodes = [nodes.get(node) for node in nodes if node[2] == "A"]
+currentNodes = [node for node in nodes if node[2] == "A"]
 nextNodes = []
 steps = 0
 finishCount = 0
 print(currentNodes)
-while finishCount != len(currentNodes):
-    for i in instruction:
-        steps += 1
-        for currentNode in currentNodes:
+
+
+
+
+for node in currentNodes:
+    steps = 0
+    finish = False
+    currentNode = nodes.get(node)
+    while not finish:
+        for i in instruction:
+            steps += 1
             if(currentNode[0 if i == 'L' else 1][2] == "Z"):
-                finishCount += 1 
-            if(finishCount == len(currentNodes)):
+                finish = True
+                if(currentNode[0 if i == 'L' else 1] not in currentNodes):
+                    currentNodes.append(currentNode[0 if i == 'L' else 1])
                 break
-            nextNodes.append(nodes.get(currentNode[0 if i == 'L' else 1]))
-        if(len(currentNodes) == len(nextNodes)):
-            currentNodes = nextNodes
-        else:
-            break
-        nextNodes = []
-        finishCount = 0
+            else:
+                currentNode = nodes.get(currentNode[0 if i == 'L' else 1])
 
 print(currentNodes)
 print(f"Part2: {steps}")
