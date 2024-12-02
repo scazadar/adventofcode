@@ -11,9 +11,9 @@ reports = [[int(x) for x in s.split()]
 
 def compareLevels(report,x,ic):
     if(ic > 0):
-        return  report[x] < report[x+1] - 3 or report[x] >= report[x+1] #or (sr[x] != list(reversed(report))[x] and sr[x] != report[x])
+        return  report[x] < report[x+1] - 3 or report[x] >= report[x+1] 
     else:
-        return report[x] > report[x+1] + 3 or report[x] <= report[x+1] #or (sr[x] != list(reversed(report))[x] and sr[x] != report[x])
+        return report[x] > report[x+1] + 3 or report[x] <= report[x+1]
 
 safeCount = 0        
 safeCount2 = 0
