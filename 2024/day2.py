@@ -39,6 +39,7 @@ for report in reports:
                     break
             else:
                 safe = True
+                break
                          
     safeCount2 += 1 if safe else 0
             
