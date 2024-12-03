@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Imports
 import time
-import re
+import re,sys
 
 # Zeit Start
 start = time.time()
@@ -9,26 +9,22 @@ start = time.time()
 # Main
 input = open("2024/inputs/day3").read()
 
-p1muls = re.findall(r"mul\(\d+,\d+\)",input)
-p2muls = re.findall(r"mul\(\d+,\d+\)|do\(\)|don't\(\)", input)
+p1muls = re.findall(r"mul\((\d+),(\d+)\)",input)
+p2muls = re.findall(r"(don't\(\)|do\(\))|mul\((\d+),(\d+)\)", input)
 
 filterd_muls = []
 
 dod = True
-for m in p2muls:
-    if(m == "don't()"):
+for cmd,l,r in p2muls:
+    if(cmd == "don't()"):
         dod = False
-    elif(m == "do()"):
+    elif(cmd == "do()"):
         dod = True
     elif(dod):
-        filterd_muls.append(m)
+        filterd_muls.append((l,r))
 
-def mul(x,y):
-    return x*y
-
-print(f"Part1: {sum([eval(m) for m in p1muls])}")
-print(f"Part2: {sum([eval(m) for m in filterd_muls])}")
-
+print(f"Part1: {sum([int(l)*int(r) for l,r in p1muls])}")
+print(f"Part2: {sum([int(l)*int(r) for l,r in filterd_muls])}")
 
 # Zeit Ende
 ende = time.time()
