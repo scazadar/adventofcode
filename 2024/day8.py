@@ -52,7 +52,7 @@ antinodes = []
 for frequency in antennas:
     for p1, p2 in combinations(antennas.get(frequency)[0],2):
         for an in calcAntinodes(p1,p2,abstand(p1,p2)):
-            if(an[0] >= 0 and an[0] < len(map) and an[1] >= 0 and an[1] < len(map[0])):
+            if(0 <= an[0] < len(map) and 0 <= an[1] < len(map[0])):
                 antinodes.append(an)
             
 print(f"Part1: {len(set([f"{_[0]},{_[1]}" for _ in antinodes]))}")
@@ -67,7 +67,7 @@ for frequency in antennas:
             p1,p2 = calcAntinodes(p1,p2,d)
             outCount = 0
             for an in [p1,p2]:
-                if(an[0] >= 0 and an[0] < len(map) and an[1] >= 0 and an[1] < len(map[0])):
+                if(0 <= an[0] < len(map) and 0 <= an[1] < len(map[0])):
                     antinodes.append(an)
                 else:
                     outCount += 1           
