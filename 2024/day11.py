@@ -7,7 +7,7 @@ from collections import Counter
 start = time.time()
 
 # Main
-stones = [int(_) for _ in open("2024/inputs/day11.sample").read().split()]
+stones = [int(_) for _ in open("2024/inputs/day11").read().split()]
 stonesCounter = Counter(stones)
 
 #Part1
@@ -25,33 +25,29 @@ def blink(stones):
 
     return newStones
 
-for i in range(4):
+for i in range(25):
     stones = blink(stones)
 
-print(stones)
-print(Counter(stones))
 print(f"Part1: {len(stones)}")
+
 
 #Part2
 def blink2(stones):
-    newStones = stones.copy()
-    
+    newStones = Counter()
     for stone in stones.keys():
-        newStones[stone] = 0
+        #newStones[stone] -= 1
         if(stone == 0):
-            newStones[1] = stones[stone]
+            newStones[1] += stones[0]
         elif(len(str(stone)) % 2 == 0):
-            newStones[int(str(stone)[:len(str(stone)) // 2])] = stones[stone]
-            newStones[int(str(stone)[len(str(stone)) // 2:])] = stones[stone]
+            newStones[int(str(stone)[:len(str(stone)) // 2])] += stones[stone]
+            newStones[int(str(stone)[len(str(stone)) // 2:])] += stones[stone]
         else:
-            newStones[2024 * stone] = stones[stone]
-
+            newStones[2024 * stone] += stones[stone]
     return newStones
 
-for i in range(4):
+for i in range(75):
     stonesCounter = blink2(stonesCounter)
 
-print(stonesCounter)
 print(f"Part2: {sum([stonesCounter[_] for _ in stonesCounter])}")
 
 
