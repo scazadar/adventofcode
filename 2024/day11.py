@@ -35,7 +35,6 @@ print(f"Part1: {len(stones)}")
 def blink2(stones):
     newStones = Counter()
     for stone in stones.keys():
-        #newStones[stone] -= 1
         if(stone == 0):
             newStones[1] += stones[0]
         elif(len(str(stone)) % 2 == 0):
