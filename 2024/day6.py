@@ -60,7 +60,7 @@ for i,p in enumerate(path):
         if(calcVisited(mmap,startPosition,currentDirection,path) == False):
             #c += 1
             c.append((p[1],p[2]))
-            print(len(set(c)))
+            #print(len(set(c)))
             
 print(f"Part2: {len(set(c))}") 
 
