@@ -49,6 +49,7 @@ def getPath(m):
 racePath = getPath(racetrack)[0]
 racePathLength = racePath[1]
 
+#Part1
 cheatPathLengths = []
 for n,position in enumerate(racePath[0]):
     directions = ((0,2),(2,0),(0,-2),(-2,0))
@@ -62,17 +63,14 @@ print(f"Part1: {len(list(filter(lambda x: x >= 100, cheatPathLengths)))}")
     
 
 #Part2 (damit geht auch Part1)
-
 # #Kreis
 def getCircle(radius,point):
-    center_y, center_x = point
-    radius = radius
-
+    centery, centerx = point
     points_inside_circle = []
 
     for y in range(len(racetrack)):
         for x in range(len(racetrack[0])):
-            if (y - center_y)**2 + (x - center_x)**2 <= radius**2:
+            if (y - centery)**2 + (x - centerx)**2 <= radius**2:
                 points_inside_circle.append((y, x))
     return points_inside_circle
 

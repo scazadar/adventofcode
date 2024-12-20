@@ -67,7 +67,7 @@ for design in designs:
             c += current[design]
             break
 
-print(f"Part1: {c}")
+print(f"Part2: {c}")
         
 
 # Zeit Ende
