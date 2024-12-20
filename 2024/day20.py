@@ -63,7 +63,7 @@ print(f"Part1: {len(list(filter(lambda x: x >= 100, cheatPathLengths)))}")
 
 #Part2 (damit geht auch Part1)
 
-# #Kreis braucht man vermutlich eigentlich nicht, da ich jetzt die Manhattan-Metrik kenne. Aber erstmal drin :D
+# #Kreis
 def getCircle(radius,point):
     center_y, center_x = point
     radius = radius
@@ -81,6 +81,7 @@ def getCheatPaths(r,racePath):
     for n,position in enumerate(racePath[0]):
         cheatPathLengths[position] = []
         for d in list(set(getCircle(r,position)) & set(racePath[0])):
+        #for d in racePath[0][n:]:
             next_y, next_x = d
             # #Manhattan-Metrik https://de.wikipedia.org/wiki/Manhattan-Metrik
             i = abs(next_y - position[0]) + abs(next_x - position[1])    

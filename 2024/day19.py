@@ -53,8 +53,7 @@ def getNextStrings(current,design):
                     if(c+towel not in new):
                         new[c + towel] = current[c] +1
                     else:
-                        new[c + towel] += 1
-                        
+                        new[c + towel] += 1        
     return new
 
 c = 0
