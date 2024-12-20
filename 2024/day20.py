@@ -5,7 +5,7 @@ import time,copy
 # Zeit Start
 startZeit = time.time()
 
-file = "2024/inputs/day20.sample"
+file = "2024/inputs/day20"
 
 racetrack = [[_ for _ in _.strip()] for _ in open(file).readlines()]
 
@@ -63,6 +63,7 @@ print(f"Part1: {len(list(filter(lambda x: x >= 100, cheatPathLengths)))}")
 
 #Part2 (damit geht auch Part1)
 
+# #Kreis braucht man vermutlich eigentlich nicht, da ich jetzt die Manhattan-Metrik kenne. Aber erstmal drin :D
 def getCircle(radius,point):
     center_y, center_x = point
     radius = radius
@@ -79,24 +80,16 @@ def getCheatPaths(r,racePath):
     cheatPathLengths = {}
     for n,position in enumerate(racePath[0]):
         cheatPathLengths[position] = []
-        for i in range(2,r + 1):
-            for d in list(set(getCircle(i,position)) & set(racePath[0])):
-                next_y, next_x = d
-                if((next_y,next_x) in racePath[0] and racePath[0].index((next_y,next_x)) > n and (racePath[0].index((next_y,next_x)) - n - i) != 0):
-                    cheatPathLengths[position].append((racePath[0].index((next_y,next_x)) - n - i))
+        for d in list(set(getCircle(r,position)) & set(racePath[0])):
+            next_y, next_x = d
+            # #Manhattan-Metrik https://de.wikipedia.org/wiki/Manhattan-Metrik
+            i = abs(next_y - position[0]) + abs(next_x - position[1])    
+            if((next_y,next_x) in racePath[0] and racePath[0].index((next_y,next_x)) > n and (racePath[0].index((next_y,next_x)) - n - i) != 0 and i <= r):
+                cheatPathLengths[position].append((racePath[0].index((next_y,next_x)) - n - i))
     return cheatPathLengths
 
-cheatPaths = getCheatPaths(21,racePath)
-
-print(sorted(list(filter(lambda x: x >= 50, sum([list(set(cheatPaths[_])) for _ in cheatPaths], [])))))
-#print(f"Part2: {len(list(filter(lambda x: x >= 100, getCheatPaths(2,racePath))))}")
-
-
-
-
-
-
-
+cheatPaths = getCheatPaths(20,racePath)
+print(f"Part2: {len(list(filter(lambda x: x >= 100, sum([cheatPaths[_] for _ in cheatPaths], []))))}")
 
 
 # Zeit Ende
