@@ -5,7 +5,7 @@ import time
 # Zeit Start
 startZeit = time.time()
 
-file = "2024/inputs/day19"
+file = "2024/inputs/day19.sample"
 
 towels,designs= open(file).read().split("\n\n")
 
@@ -22,12 +22,13 @@ def getNextStrings(current,design):
         for c in current:
             for towel in towels:
                 if(design.replace(c,"",1).startswith(towel) and len(c+towel) <= len(design) and c+towel not in new):
-                    new.append(c + towel)        
+                    new.append(c + towel)       
     return new
 
 c = 0
 for design in designs:
     current = []
+    break
     while True:
         current = getNextStrings(current,design)
         if(len(current) == 0):
@@ -39,32 +40,35 @@ for design in designs:
 print(f"Part1: {c}")
 
 
-#part2
-def getNextStrings2(current,design):
-    new = []
+def getNextStrings(current,design):
+    new = {}
     if not current:
         for towel in towels:
             if(design.startswith(towel)):
-                new.append([towel])
+                new[towel] = 1
     else:
         for c in current:
             for towel in towels:
-                if(design.replace("".join(c),"",1).startswith(towel) and len(c+[towel]) <= len(design) and c+[towel] not in new):
-                    new.append(c + [towel])        
+                if(design.replace(c,"",1).startswith(towel) and len(c+towel) <= len(design)):
+                    if(c+towel not in new):
+                        new[c + towel] = current[c] +1
+                    else:
+                        new[c + towel] += 1
+                        
     return new
 
 c = 0
-possible = []
 for design in designs:
-    current = []
+    current = {}
     while True:
-        current = getNextStrings2(current,design)
+        current = getNextStrings(current,design)
         if(len(current) == 0):
             break
-        elif(design in ["".join(_) for _ in current]):
-            c += ["".join(_) for _ in current].count(design)
+        elif(design in current):
+            c += current[design]
+            break
 
-print(f"Part2: {c}")
+print(f"Part1: {c}")
         
 
 # Zeit Ende
