@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Imports
 import time,copy
+import functools
 
 # Zeit Start
 startZeit = time.time()
@@ -64,6 +65,7 @@ print(f"Part1: {len(list(filter(lambda x: x >= 100, cheatPathLengths)))}")
 
 #Part2 (damit geht auch Part1)
 # #Kreis
+@functools.cache
 def getCircle(radius,point):
     centery, centerx = point
     points_inside_circle = []

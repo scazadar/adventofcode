@@ -58,6 +58,7 @@ while True:
 minCosts = min([_[1] for _ in finished])
 print(f"Part1: {minCosts}")
 
+
 count = 0
 for f in finished:
     if(f[1] == min([_[1] for _ in finished])):
