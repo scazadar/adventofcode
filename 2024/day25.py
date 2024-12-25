@@ -11,13 +11,7 @@ locksAndKeys = [_.split("\n") for _ in open(file).read().split("\n\n")]
 locks = [[_.index('.') -1 for _ in zip(*[tuple(_ for _ in _) for _ in _])] for _ in locksAndKeys if _[0] == '#####']
 keys = [[len(_) - _.index('#') -1 for _ in zip(*[tuple(_ for _ in _) for _ in _])] for _ in locksAndKeys if _[0] != '#####']
 
-fit = 0
-for lock in locks:
-    for key in keys:
-        if(not any(x >= 6 for x in [l+k for l,k in zip(lock,key)])):
-            fit += 1
-            
-print(f"Part1: {fit}")
+print(f"Part1: {sum([1 for lock in locks for key in keys if not any(x >= 6 for x in [l+k for l,k in zip(lock,key)])])}")
             
 
 # Zeit Ende
