@@ -3,6 +3,7 @@
 import time
 import functools
 import re
+import itertools
 
 # Zeit Start
 startZeit = time.time()
@@ -54,11 +55,33 @@ for i in wiresInit:
 print(f"Part1: {int("".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("z")], reverse=True)]),2)}")
     
 #Part 2
-xWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("x")], reverse=True)])
-yWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("y")], reverse=True)])
-zWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("z")], reverse=True)])
 
-print(xWires,yWires,int(xWires,2) & int(yWires,2),int(zWires,2))
+def validate(wires:Wire):
+    xWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("x")], reverse=True)])
+    yWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("y")], reverse=True)])
+    zWires = "".join([str(int(wires[_].state)) for _ in sorted([_ for _ in wires if _.startswith("z")], reverse=True)])
+
+    return int(xWires,2) & int(yWires,2) == int(zWires,2)
+
+def getDiffs(original, permutation):
+    return [o for o, p in zip(original, permutation) if o != p]
+
+allGateOutputs = [_[3] for _ in gates]
+allPermutations = tuple(_ for _ in itertools.permutations(allGateOutputs) if len(getDiffs(allGateOutputs,_)) == 4)
+
+for permutation in allPermutations:
+    wires = {_2:Wire() for _ in gates for _2 in _ if _2 not in ("OR","AND","XOR")}
+    for i,gate in enumerate(gates):
+        g = Gate(wires[gate[0]],wires[gate[2]],wires[permutation[i]],gate[1])
+        wires[gate[0]].outputs.append(g)
+        wires[gate[2]].outputs.append(g)
+        
+    for i in wiresInit:
+        wires[i].setState(wiresInit[i])
+
+    if(validate(wires)):
+        print(f"Part2: {",".join(sorted(getDiffs(allGateOutputs,permutation)))}")
+        break
 
 # Zeit Ende
 endeZeit = time.time()
