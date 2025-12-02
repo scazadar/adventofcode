@@ -7,7 +7,7 @@ start = time.time()
 
 #Main
 dial = 50
-rotations = [int(s[1:]) * -1 if s[0] == 'L' else int(s[1:]) for s in open("inputs/day1").read().split("\n")]
+rotations = [int(s[1:]) * -1 if s[0] == 'L' else int(s[1:]) for s in open("inputs/day1").readlines()]
 
 countP1 = 0
 countP2 = 0

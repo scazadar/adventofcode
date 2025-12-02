@@ -6,7 +6,7 @@ import time, re
 start = time.time()
 
 #Main
-ranges = [[tuple([int(r[0]),int(r[1])]) for r in re.findall(r"(\d+)-(\d+)",s)] for s in open("inputs/day2").read().split("\n")][0]
+ranges = [[tuple([int(r[0]),int(r[1])]) for r in re.findall(r"(\d+)-(\d+)",s)] for s in open("inputs/day2").readlines()][0]
 
 invalidIDsP1 = []
 invalidIDsP2 = []
