@@ -8,30 +8,33 @@ start = time.time()
 #Main
 banks = [[int(x) for x in s.strip()] for s in open("inputs/day3").readlines()]
 
-maxJoltagesP1 = 0
-maxJoltagesP2 = 0
+# Part 1
+maxJoltages = []
 
 for bank in banks:
-    maxJoltage = ""   
-    lastIndex = 0
-    for x in reversed(range(2)):
-        li = len(bank) - x
-        hJ = max(bank[lastIndex:li])
-        maxJoltage += str(hJ)
-        lastIndex = bank.index(hJ,lastIndex) + 1   
-    maxJoltagesP1 += int(maxJoltage)
+    maxJoltage = 0
+    for x in range(len(bank)-1):
+        joltage = int(f"{bank[x]}{max(bank[x+1:])}")
+        if(joltage > maxJoltage):
+            maxJoltage = joltage
+    maxJoltages.append(maxJoltage)
 
-    maxJoltage = "" 
+print(f"Part 1: {sum(maxJoltages)}")
+
+# Part 2
+maxJoltages = 0
+for bank in banks:
+    maxJoltage = ""
     lastIndex = 0
+    
     for x in reversed(range(12)):
         li = len(bank) - x
         hJ = max(bank[lastIndex:li])
         maxJoltage += str(hJ)
         lastIndex = bank.index(hJ,lastIndex) + 1
-    maxJoltagesP2 += int(maxJoltage)
+    maxJoltages += int(maxJoltage)
     
-print(f"Part 1: {maxJoltagesP1}")
-print(f"Part 2: {maxJoltagesP2}")
+print(f"Part 2: {maxJoltages}")
 
 #Zeit Ende
 ende = time.time()
