@@ -26,13 +26,11 @@ timelines = {x:0 for x,_ in enumerate(beams) }
 timelines[beams.index('|')] += 1 
 
 for row in diagram[1:]:
-    tempTimelines = timelines.copy()
     for x,c in enumerate(row):
         if(c == "^" and timelines[x] > 0):
-            tempTimelines[x-1] += timelines[x]
-            tempTimelines[x+1] += timelines[x]
-            tempTimelines[x] = 0
-    timelines = tempTimelines
+            timelines[x-1] += timelines[x]
+            timelines[x+1] += timelines[x]
+            timelines[x] = 0
         
 print(f"Part 2: {sum([timelines[k] for k in timelines])}")
 
