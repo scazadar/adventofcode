@@ -7,14 +7,6 @@ start = time.time()
 
 #Main
 diagram = [n.strip() for n in open("inputs/day7").readlines()]
-
-def getNeighbors(x,row):
-    neighbors = [x-1,x+1]
-    validNeighbors = []
-    for xi in neighbors:
-        if(0 <= xi < len(row)):
-            validNeighbors.append(xi)
-    return validNeighbors
    
 beams = [_ if _ == '.' else '|' for _ in diagram[0] ]
 
@@ -24,9 +16,8 @@ for row in diagram[1:]:
         if(c == "^" and beams[x] == '|'):
             splitted += 1
             beams[x] = '.'
-            newBeams = getNeighbors(x,row)
-            beams[newBeams[0]] = '|'
-            beams[newBeams[1]] = '|'
+            beams[x-1] = '|'
+            beams[x+1] = '|'
             
 print(f"Part 1: {splitted}")
 
@@ -38,9 +29,8 @@ for row in diagram[1:]:
     tempTimelines = timelines.copy()
     for x,c in enumerate(row):
         if(c == "^" and timelines[x] > 0):
-            newBeams = getNeighbors(x,row)
-            tempTimelines[newBeams[0]] += timelines[x]
-            tempTimelines[newBeams[1]] += timelines[x]
+            tempTimelines[x-1] += timelines[x]
+            tempTimelines[x+1] += timelines[x]
             tempTimelines[x] = 0
     timelines = tempTimelines
         
