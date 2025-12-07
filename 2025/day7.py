@@ -21,9 +21,8 @@ for row in diagram[1:]:
             
 print(f"Part 1: {splitted}")
 
-beams = [_ if _ == '.' else '|' for _ in diagram[0] ]
 timelines = {x:0 for x,_ in enumerate(beams) }
-timelines[beams.index('|')] += 1 
+timelines[diagram[0].index('S')] += 1 
 
 for row in diagram[1:]:
     for x,c in enumerate(row):
