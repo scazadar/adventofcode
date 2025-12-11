@@ -67,6 +67,8 @@ while not end:
             else:
                 tempPaths[p] += dacPaths[path]
         tempPaths[path] -= dacPaths[path]
+        if(tempPaths[path] > 0):
+            end = False
     dacPaths = tempPaths
     
     tempPaths = fftPaths.copy()
