@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 #Imports
-import time, re, sys
+import time, re
 
 #Zeit Start
 start = time.time()
 
 #Main
-input = [r for r in open("inputs/day10").readlines()]
+input = [r for r in open("inputs/day10.sample").readlines()]
 
 lights = [_.replace('.','0').replace('#','1') for _ in [_.split()[0][1:-1] for _ in input]]
 buttons = [[[_ for _ in list(map(int,_.split(',')))] for _ in re.findall(r"\((\d+(?:,\d+)*)\)", _)] for _ in input]
@@ -44,7 +44,7 @@ for i,light in enumerate(lights):
 
 print(f"Part 1: {sum(pressCounts)}")
 
-
+# Geht nur fürs Sample
 pressCounts = []
 for i,jolt in enumerate(joltages):
     pressCount = 0
@@ -70,11 +70,9 @@ for i,jolt in enumerate(joltages):
                 tempVariations.add(tuple(tV))
         variations = tempVariations
     print(pressCount)
-    pressCounts.append(pressCount)   
+    pressCounts.append(pressCount)  
    
 print(f"Part 2: {sum(pressCounts)}")
-    
-   
     
 
 #Zeit Ende
