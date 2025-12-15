@@ -31,9 +31,8 @@ for grid in sizes:
 for k in reducedPresentShapes:
     n = k[0][0] * k[0][1]
     all = sum([c*countParts(presentShapes[i]) for i,c in enumerate(k[1])])
-    print(k, n, all, n-all)
     
-print(len(reducedPresentShapes))
+print(f"Part 1: {len(reducedPresentShapes)}")
 
 
    
