@@ -27,10 +27,6 @@ reducedPresentShapes = []
 for grid in sizes:
     if(calcSize(grid[0],grid[1])):
         reducedPresentShapes.append(tuple([grid[0],grid[1]]))
-        
-for k in reducedPresentShapes:
-    n = k[0][0] * k[0][1]
-    all = sum([c*countParts(presentShapes[i]) for i,c in enumerate(k[1])])
     
 print(f"Part 1: {len(reducedPresentShapes)}")
 
